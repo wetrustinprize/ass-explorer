@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://chi4tqvqrj8cb"]
+
+[ext_resource type="Theme" uid="uid://rklxr0hoqkuj" path="res://theme.tres" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://fs0rlvcq1plu" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dijrgm5f188jl" path="res://status.gd" id="3_h2yge"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0xm2m")
+script = ExtResource("1_ig7tw")
+
+[node name="SplitContainer" type="SplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = -150
+
+[node name="File Explorer" type="MarginContainer" parent="SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="SplitContainer/File Explorer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SplitContainer/File Explorer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SplitContainer/File Explorer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Search" type="LineEdit" parent="SplitContainer/File Explorer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+caret_blink = true
+
+[node name="HSeparator" type="HSeparator" parent="SplitContainer/File Explorer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemsListScroll" type="Panel" parent="SplitContainer/File Explorer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+clip_children = 2
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemsList" type="VBoxContainer" parent="SplitContainer/File Explorer/Panel/MarginContainer/VBoxContainer/ItemsListScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_right = 388.0
+offset_bottom = 527.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator2" type="HSeparator" parent="SplitContainer/File Explorer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Status" type="HBoxContainer" parent="SplitContainer/File Explorer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_h2yge")
+
+[node name="FilesLabel" type="RichTextLabel" parent="SplitContainer/File Explorer/Panel/MarginContainer/VBoxContainer/Status"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Filtered: 0 Total: 12000 "
+fit_content = true
+scroll_active = false
+
+[node name="ViLabel" type="Label" parent="SplitContainer/File Explorer/Panel/MarginContainer/VBoxContainer/Status"]
+layout_mode = 2
+text = "NORMAL"
+
+[node name="Content Viewer" type="MarginContainer" parent="SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="SplitContainer/Content Viewer"]
+clip_children = 2
+layout_mode = 2
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a Directory"
+ok_button_text = "Open Folder"
+dialog_hide_on_ok = true
+file_mode = 2
+access = 2
+show_hidden_files = true
