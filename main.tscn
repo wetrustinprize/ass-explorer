@@ -48,7 +48,7 @@ layout_mode = 2
 context_menu_enabled = false
 emoji_menu_enabled = false
 virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
+clear_button_enabled = true
 caret_blink = true
 
 [node name="HSeparator" type="HSeparator" parent="SplitContainer/File Explorer/Panel/MarginContainer/VBoxContainer"]
@@ -83,6 +83,7 @@ fit_content = true
 scroll_active = false
 
 [node name="ViLabel" type="Label" parent="SplitContainer/File Explorer/Panel/MarginContainer/VBoxContainer/Status"]
+visible = false
 layout_mode = 2
 text = "NORMAL"
 

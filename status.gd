@@ -5,7 +5,7 @@ extends HBoxContainer
 
 func _ready() -> void:
 	Ass.on_files_updated.connect(_files_update)
-	Ass.on_path_changed.connect(_path_changed)
+	Ass.on_folder_changed.connect(_path_changed)
 
 func _path_changed(_new_path: String) -> void:
 	pass

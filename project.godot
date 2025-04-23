@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Ass="*res://ass.gd"
 Seeker="*res://seeker.gd"
+Eater="*res://eater.gd"
 
 [rendering]
 

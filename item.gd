@@ -1,16 +1,16 @@
 extends HBoxContainer
-class_name Item
 
-var path: String
-var type: TYPE
+var my_path: Dictionary
 
 @onready var path_label: RichTextLabel = %PathLabel
+@onready var distance_label: Label = %DistanceLabel
+@onready var icon_texture: TextureRect = %IconTexture
 
-enum TYPE {
-	UNKNOWN,
-	IMAGE,
-}
+func setup(new_path: Dictionary) -> void:
+	my_path = new_path
 
-func setup(new_path: String) -> void:
-	path = new_path
-	path_label.text = path
+	path_label.text = my_path.path.get_file()
+	distance_label.text = str(my_path.score)
+
+	var type = Eater.taste(my_path.path)
+	icon_texture.texture = load("res://icons/%s.svg" % Eater.FLAVOUR.keys()[type])
